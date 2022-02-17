@@ -1,5 +1,6 @@
 class RipplesController < ApplicationController
   before_action :set_ripple, only: %i[ show edit update destroy ]
+  #skip_before_action :redirect_to_homepage, only: [:show, :index, :new, :create]
 
   # GET /ripples or /ripples.json
   def index

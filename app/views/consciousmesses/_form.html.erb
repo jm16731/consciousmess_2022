@@ -1,0 +1,17 @@
+<%= form_with(model: consciousmess) do |form| %>
+  <% if consciousmess.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(consciousmess.errors.count, "error") %> prohibited this consciousmess from being saved:</h2>
+
+      <ul>
+        <% consciousmess.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

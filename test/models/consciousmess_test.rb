@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ConsciouTest < ActiveSupport::TestCase
+class ConsciousmessTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

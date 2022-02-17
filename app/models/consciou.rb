@@ -1,2 +1,0 @@
-class Consciou < ApplicationRecord
-end

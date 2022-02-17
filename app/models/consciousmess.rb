@@ -1,0 +1,2 @@
+class Consciousmess < ApplicationRecord
+end

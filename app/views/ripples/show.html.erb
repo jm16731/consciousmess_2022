@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ripple.name %>
+</p>
+
+<p>
+  <strong>Posted:</strong>
+  <%= @ripple.posted %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @ripple.message %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @ripple.url %>
+</p>
+
+<%= link_to 'Edit', edit_ripple_path(@ripple) %> |
+<%= link_to 'Back', ripples_path %>

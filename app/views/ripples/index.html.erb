@@ -15,14 +15,12 @@
 
   <tbody>
     <% @ripples.each do |ripple| %>
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= ripple.name %></td>
         <td><%= ripple.posted %></td>
         <td><%= ripple.message %></td>
         <td><%= ripple.url %></td>
         <td><%= link_to 'Show', ripple %></td>
-        <td><%= link_to 'Edit', edit_ripple_path(ripple) %></td>
-        <td><%= link_to 'Destroy', ripple, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

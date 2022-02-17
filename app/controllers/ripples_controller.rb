@@ -3,7 +3,7 @@ class RipplesController < ApplicationController
 
   # GET /ripples or /ripples.json
   def index
-    @ripples = Ripple.all
+    @ripples = Ripple.all.order(:posted).reverse_order
   end
 
   # GET /ripples/1 or /ripples/1.json

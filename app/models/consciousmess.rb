@@ -1,3 +1,3 @@
 class Consciousmess < ApplicationRecord
-  has_many :ripple, dependent: :destroy
+  #has_many :ripple, dependent: :destroy
 end

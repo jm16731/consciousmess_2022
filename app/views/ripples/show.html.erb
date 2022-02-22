@@ -1,24 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ripple.name %>
+<p class="speaker">
+  <strong><%= @ripple.name %></strong>,
+    on <strong><%= @ripple.posted %></strong>, had this to say:
 </p>
 
-<p>
-  <strong>Posted:</strong>
-  <%= @ripple.posted %>
-</p>
-
-<p>
-  <strong>Message:</strong>
+<p class="message">
   <%= @ripple.message %>
 </p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @ripple.url %>
-</p>
-
-<%= link_to 'Edit', edit_ripple_path(@ripple) %> |
 <%= link_to 'Back', ripples_path %>

@@ -17,10 +17,15 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ripple" do
     assert_difference('Ripple.count') do
-      post ripples_url, params: { ripple: { message: @ripple.message, name: @ripple.name, posted: @ripple.posted, url: @ripple.url } }
+      post ripples_url, params: {
+        ripple: {
+          message: @ripple.message, name: @ripple.name,
+          posted: @ripple.posted, url: @ripple.url
+        }
+      }
     end
 
-    assert_redirected_to ripple_url(Ripple.last)
+    assert_redirected_to ripples_url
   end
 
   test "should show ripple" do

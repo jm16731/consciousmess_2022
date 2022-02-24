@@ -16,34 +16,34 @@ class RipplesTest < ApplicationSystemTestCase
 
     fill_in "Message", with: @ripple.message
     fill_in "Name", with: @ripple.name
-    fill_in "Posted", with: @ripple.posted
+    #fill_in "Posted", with: @ripple.posted
     fill_in "Url", with: @ripple.url
     click_on "Create Ripple"
 
     assert_text "Ripple was successfully created"
-    click_on "Back"
+    #click_on "Back"
   end
 
-  test "updating a Ripple" do
-    visit ripples_url
-    click_on "Edit", match: :first
+  #test "updating a Ripple" do
+  #  visit ripples_url
+  #  click_on "Edit", match: :first
 
-    fill_in "Message", with: @ripple.message
-    fill_in "Name", with: @ripple.name
-    fill_in "Posted", with: @ripple.posted
-    fill_in "Url", with: @ripple.url
-    click_on "Update Ripple"
+  #  fill_in "Message", with: @ripple.message
+  #  fill_in "Name", with: @ripple.name
+  #  fill_in "Posted", with: @ripple.posted
+  #  fill_in "Url", with: @ripple.url
+  #  click_on "Update Ripple"
 
-    assert_text "Ripple was successfully updated"
-    click_on "Back"
-  end
+  #  assert_text "Ripple was successfully updated"
+  #  click_on "Back"
+  #end
 
-  test "destroying a Ripple" do
-    visit ripples_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+  #test "destroying a Ripple" do
+  #  visit ripples_url
+  #  page.accept_confirm do
+  #    click_on "Destroy", match: :first
+  #  end
 
-    assert_text "Ripple was successfully destroyed"
-  end
+  #  assert_text "Ripple was successfully destroyed"
+  #end
 end

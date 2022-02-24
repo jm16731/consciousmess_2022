@@ -31,6 +31,6 @@
 <%= link_to 'New Ripple', new_ripple_path %>
 
 <%= link_to 'Newest', ripples_path(:offset => 0) %>
-<%= link_to 'Previous 10', ripples_path(:offset => 10) %>
-<%= link_to 'Next 10', ripples_path(:offset => 20) %>
-<%= link_to 'Oldest', ripples_path(:offset => 0) %>
+<%= link_to 'Previous 10', ripples_path(:offset => (@offset.to_i - 10)) %>
+<%= link_to 'Next 10', ripples_path(:offset => (@offset.to_i + 10)) %>
+<%= link_to 'Oldest', ripples_path(:offset => @last_page) %>

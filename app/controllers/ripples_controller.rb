@@ -6,6 +6,8 @@ class RipplesController < ApplicationController
   def index
     @ripples = Ripple.all.order(:posted).
       reverse_order.limit(10).offset(params[:offset])
+    @offset = params[:offset]
+    @last_page = (Ripple.count - 10).round(-1, half: :down)
   end
 
   # GET /ripples/1 or /ripples/1.json

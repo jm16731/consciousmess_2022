@@ -4,7 +4,8 @@ class RipplesController < ApplicationController
 
   # GET /ripples or /ripples.json
   def index
-    @ripples = Ripple.all.order(:posted).reverse_order
+    @ripples = Ripple.all.order(:posted).reverse_order.limit(10).offset(params[:offset])
+    #.where("started = ?", params[:start])
   end
 
   # GET /ripples/1 or /ripples/1.json
@@ -26,7 +27,7 @@ class RipplesController < ApplicationController
 
     respond_to do |format|
       if @ripple.save
-        format.html { redirect_to ripples_url,  
+        format.html { redirect_to ripples_url,
           notice: "Ripple was successfully created." }
         format.json { render :show, status: :created, location: @ripple }
       else

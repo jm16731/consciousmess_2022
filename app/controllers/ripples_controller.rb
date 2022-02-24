@@ -4,8 +4,8 @@ class RipplesController < ApplicationController
 
   # GET /ripples or /ripples.json
   def index
-    @ripples = Ripple.all.order(:posted).reverse_order.limit(10).offset(params[:offset])
-    #.where("started = ?", params[:start])
+    @ripples = Ripple.all.order(:posted).
+      reverse_order.limit(10).offset(params[:offset])
   end
 
   # GET /ripples/1 or /ripples/1.json

@@ -4,12 +4,9 @@ class RipplesController < ApplicationController
 
   # GET /ripples or /ripples.json
   def index
+    session[:offset] = 0
     @ripples = Ripple.all.order(:posted).
-      reverse_order.limit(10)
-    #@ripples = Ripple.all.order(:posted).
-    #  reverse_order.limit(10).offset(params[:offset])
-    #@offset = params[:offset]
-    #@last_page = (Ripple.count - 10).round(-1, half: :down)
+      reverse_order.limit(10).offset(session[:offset])
   end
 
   # GET /ripples/1 or /ripples/1.json
@@ -69,17 +66,23 @@ class RipplesController < ApplicationController
   end
 
   def prev_10
-    #
+    session[:offset] = (session[:offset].to_s.to_i - 10)
+    @ripples = Ripple.all.order(:posted).
+      reverse_order.limit(10).offset(session[:offset])
+    render "index"
   end
 
   def next_10
-    #
+    session[:offset] = (session[:offset].to_s.to_i + 10)
+    @ripples = Ripple.all.order(:posted).
+      reverse_order.limit(10).offset(session[:offset])
+    render "index"
   end
 
   def oldest
+    session[:offset] = (Ripple.count - 10).round(-1, half: :down)
     @ripples = Ripple.all.order(:posted).
-      reverse_order.limit(10).
-      offset((Ripple.count - 10).round(-1, half: :down))
+      reverse_order.limit(10).offset(session[:offset])
     render "index"
   end
 

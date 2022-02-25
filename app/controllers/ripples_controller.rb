@@ -5,9 +5,11 @@ class RipplesController < ApplicationController
   # GET /ripples or /ripples.json
   def index
     @ripples = Ripple.all.order(:posted).
-      reverse_order.limit(10).offset(params[:offset])
-    @offset = params[:offset]
-    @last_page = (Ripple.count - 10).round(-1, half: :down)
+      reverse_order.limit(10)
+    #@ripples = Ripple.all.order(:posted).
+    #  reverse_order.limit(10).offset(params[:offset])
+    #@offset = params[:offset]
+    #@last_page = (Ripple.count - 10).round(-1, half: :down)
   end
 
   # GET /ripples/1 or /ripples/1.json
@@ -60,6 +62,25 @@ class RipplesController < ApplicationController
       format.html { redirect_to ripples_url, notice: "Ripple was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def newest
+    redirect_to ripples_url
+  end
+
+  def prev_10
+    #
+  end
+
+  def next_10
+    #
+  end
+
+  def oldest
+    @ripples = Ripple.all.order(:posted).
+      reverse_order.limit(10).
+      offset((Ripple.count - 10).round(-1, half: :down))
+    render "index"
   end
 
   private

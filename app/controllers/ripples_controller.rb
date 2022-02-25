@@ -66,17 +66,27 @@ class RipplesController < ApplicationController
   end
 
   def prev_10
-    session[:offset] = (session[:offset].to_s.to_i - 10)
-    @ripples = Ripple.all.order(:posted).
-      reverse_order.limit(10).offset(session[:offset])
-    render "index"
+    @session = (session[:offset].to_s.to_i - 10)
+    if @session <= 10
+      redirect_to ripples_url
+    else
+      session[:offset] = (@session)
+      @ripples = Ripple.all.order(:posted).
+        reverse_order.limit(10).offset(session[:offset])
+      render "index"
+    end
   end
 
   def next_10
-    session[:offset] = (session[:offset].to_s.to_i + 10)
-    @ripples = Ripple.all.order(:posted).
-      reverse_order.limit(10).offset(session[:offset])
-    render "index"
+    @session = (session[:offset].to_s.to_i + 10)
+    if @session >= (Ripple.count - 10).round(-1, half: :down)
+      redirect_to oldest_path
+    else
+      session[:offset] = @session
+      @ripples = Ripple.all.order(:posted).
+        reverse_order.limit(10).offset(session[:offset])
+      render "index"
+    end
   end
 
   def oldest

@@ -48,14 +48,45 @@ class RipplesTest < ApplicationSystemTestCase
   #end
 
   test "moving forward and backward" do
+    visit ripples_url
+    click_on "Next 10"
+    assert_selector "h1", text: "Ripples"
+    assert_equal session[:offset].to_s.to_i, 10
+    click_on "Next 10"
+    assert_equal session[:offset].to_s.to_i, 20
+    click_on "Previous 10"
+    assert_equal session[:offset].to_s.to_i, 10
+    click_on "Next 10"
+    assert_equal session[:offset].to_s.to_i, 20
+    click_on "Next 10"
+    assert_equal session[:offset].to_s.to_i, 30
+    click_on "Previous 10"
+    assert_equal session[:offset].to_s.to_i, 20
+    click_on "Previous 10"
+    assert_equal session[:offset].to_s.to_i, 10
+    click_on "Previous 10"
+    assert_equal session[:offset].to_s.to_i, 0
   end
 
   test "can move to oldest and newest" do
+    visit ripples_url
+    click_on "Oldest"
+    click_on "Newest"
+    #assert_equal "index", @controller.action_name
+    assert_equal session[:offset].to_s.to_i, 0
   end
 
   test "does not move below minimum" do
+    visit ripples_url
+    click_on "Previous 10"
+    assert_equal session[:offset].to_s.to_i, 0
   end
 
   test "does not move above maximum" do
+    visit ripples_url
+    click_on "Oldest"
+    @session = session[:offset].to_s.to_i
+    click_on "Next 10"
+    assert_equal session[:offset].to_s.to_i, @session
   end
 end

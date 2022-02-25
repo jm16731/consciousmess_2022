@@ -11,3 +11,11 @@ two:
   posted: 2022-02-17
   message: MyText
   url: MyString
+
+<% 1.upto(985) do |i| %>
+fix_<%= i %>:
+  name: dude_<%= i %>
+  posted: 2022-02-25
+  message: <%= i %>
+  url: www.example.com
+<% end %>

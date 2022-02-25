@@ -46,4 +46,16 @@ class RipplesTest < ApplicationSystemTestCase
 
   #  assert_text "Ripple was successfully destroyed"
   #end
+
+  test "moving forward and backward" do
+  end
+
+  test "can move to oldest and newest" do
+  end
+
+  test "does not move below minimum" do
+  end
+
+  test "does not move above maximum" do
+  end
 end
